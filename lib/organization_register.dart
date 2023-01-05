@@ -15,109 +15,64 @@ class ResultPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: RegisterVoter(),
+      home: RegisterOrganization(),
     );
   }
 }
 
-class RegisterVoter extends StatefulWidget {
-  RegisterVoter({super.key});
+class RegisterOrganization extends StatefulWidget {
+  RegisterOrganization({super.key});
 
   @override
-  _RegisterVoterState createState() => _RegisterVoterState();
+  _RegisterOrganizationState createState() => _RegisterOrganizationState();
 }
 
-class _RegisterVoterState extends State<RegisterVoter> {
-  late String? FullName;
-  late String? email;
-  late String? identity;
+class _RegisterOrganizationState extends State<RegisterOrganization> {
+  late String? Name;
   late String? password;
-  late String? organization;
-  late String? validate_organization;
+  late String? identity;
 
-  final GlobalKey<_RegisterVoterState> _formkey =
-      GlobalKey<_RegisterVoterState>();
+  final GlobalKey<_RegisterOrganizationState> _formkey =
+      GlobalKey<_RegisterOrganizationState>();
 
-  Widget _buildFullName() {
+  Widget _buildName() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'FullName'),
       validator: (String? value) {
         if (value == null) {
-          return 'Full name is required';
+          return 'Organization name is required';
         }
       },
       onSaved: (String? value) {
-        FullName = value;
-      },
-    );
-  }
-
-  Widget _buildEmail() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
-      validator: (String? value) {
-        if (value == null) {
-          return 'Email name is required';
-        }
-      },
-      onSaved: (String? value) {
-        email = value;
-      },
-    );
-  }
-
-  Widget _buildIdentity() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'identity'),
-      validator: (value) {
-        if (value == null) {
-          return 'identity is required';
-        }
-      },
-      onSaved: (value) {
-        identity = value;
+        Name = value;
       },
     );
   }
 
   Widget _buildPassword() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Password'),
-      validator: (value) {
+      decoration: InputDecoration(labelText: 'Email'),
+      validator: (String? value) {
         if (value == null) {
-          return 'password is required';
+          return 'Password is required';
         }
       },
-      onSaved: (value) {
+      onSaved: (String? value) {
         password = value;
       },
     );
   }
 
-  Widget _buildOrganization() {
+  Widget _buildIdentity() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Organization'),
+      decoration: InputDecoration(labelText: 'Identity'),
       validator: (String? value) {
         if (value == null) {
-          return 'Organization is required';
+          return 'Organization identity is required';
         }
       },
       onSaved: (String? value) {
-        organization = value;
-      },
-    );
-  }
-
-  Widget _buildValidateOrganization() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Retype Organization'),
-      validator: (String? value) {
-        if (value == null) {
-          return 'Organization validation is required';
-        }
-      },
-      onSaved: (String? value) {
-        validate_organization = value;
+        identity = value;
       },
     );
   }
@@ -141,12 +96,9 @@ class _RegisterVoterState extends State<RegisterVoter> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildFullName(),
-                  _buildEmail(),
-                  _buildIdentity(),
+                  _buildName(),
                   _buildPassword(),
-                  _buildOrganization(),
-                  _buildValidateOrganization(),
+                  _buildIdentity(),
                   SizedBox(
                     height: 60,
                   ),
@@ -159,7 +111,7 @@ class _RegisterVoterState extends State<RegisterVoter> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => RegisterVoter(),
+                                  builder: (context) => RegisterOrganization(),
                                 ));
                           },
                           child: Text(

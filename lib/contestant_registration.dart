@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vote/home.dart';
-import 'package:vote/poll.dart';
 import 'package:vote/vote_page.dart';
 
 class ResultPage extends StatelessWidget {
@@ -15,28 +14,26 @@ class ResultPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: RegisterVoter(),
+      home: RegisterContestant(),
     );
   }
 }
 
-class RegisterVoter extends StatefulWidget {
-  RegisterVoter({super.key});
+class RegisterContestant extends StatefulWidget {
+  RegisterContestant({super.key});
 
   @override
-  _RegisterVoterState createState() => _RegisterVoterState();
+  _RegisterContestantState createState() => _RegisterContestantState();
 }
 
-class _RegisterVoterState extends State<RegisterVoter> {
+class _RegisterContestantState extends State<RegisterContestant> {
   late String? FullName;
-  late String? email;
-  late String? identity;
-  late String? password;
+  late String? position;
   late String? organization;
   late String? validate_organization;
 
-  final GlobalKey<_RegisterVoterState> _formkey =
-      GlobalKey<_RegisterVoterState>();
+  final GlobalKey<_RegisterContestantState> _formkey =
+      GlobalKey<_RegisterContestantState>();
 
   Widget _buildFullName() {
     return TextFormField(
@@ -52,44 +49,16 @@ class _RegisterVoterState extends State<RegisterVoter> {
     );
   }
 
-  Widget _buildEmail() {
+  Widget _buildPosition() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Email'),
       validator: (String? value) {
         if (value == null) {
-          return 'Email name is required';
+          return 'Position name is required';
         }
       },
       onSaved: (String? value) {
-        email = value;
-      },
-    );
-  }
-
-  Widget _buildIdentity() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'identity'),
-      validator: (value) {
-        if (value == null) {
-          return 'identity is required';
-        }
-      },
-      onSaved: (value) {
-        identity = value;
-      },
-    );
-  }
-
-  Widget _buildPassword() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Password'),
-      validator: (value) {
-        if (value == null) {
-          return 'password is required';
-        }
-      },
-      onSaved: (value) {
-        password = value;
+        position = value;
       },
     );
   }
@@ -142,9 +111,7 @@ class _RegisterVoterState extends State<RegisterVoter> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   _buildFullName(),
-                  _buildEmail(),
-                  _buildIdentity(),
-                  _buildPassword(),
+                  _buildPosition(),
                   _buildOrganization(),
                   _buildValidateOrganization(),
                   SizedBox(
@@ -159,7 +126,7 @@ class _RegisterVoterState extends State<RegisterVoter> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => RegisterVoter(),
+                                  builder: (context) => RegisterContestant(),
                                 ));
                           },
                           child: Text(
