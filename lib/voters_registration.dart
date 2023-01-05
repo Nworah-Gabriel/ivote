@@ -137,6 +137,8 @@ class _RegisterVoterState extends State<RegisterVoter> {
         body: Center(
             widthFactor: 20.0,
             child: SingleChildScrollView(
+                child: Container(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Form(
                   key: _formkey,
                   child: Column(
@@ -214,6 +216,6 @@ class _RegisterVoterState extends State<RegisterVoter> {
                       )
                     ],
                   )),
-            )));
+            ))));
   }
 }

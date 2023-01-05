@@ -113,7 +113,7 @@ class _VoteState extends State<Vote> {
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                padding: const EdgeInsets.all(0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -228,7 +228,7 @@ class _VoteState extends State<Vote> {
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: SingleChildScrollView(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -92,6 +92,8 @@ class _RegisterOrganizationState extends State<RegisterOrganization> {
         body: Center(
             widthFactor: 20.0,
             child: SingleChildScrollView(
+                child: Container(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Form(
                   key: _formkey,
                   child: Column(
@@ -167,6 +169,6 @@ class _RegisterOrganizationState extends State<RegisterOrganization> {
                       )
                     ],
                   )),
-            )));
+            ))));
   }
 }
