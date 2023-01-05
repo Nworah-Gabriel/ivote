@@ -144,7 +144,7 @@ class _AboutState extends State<About> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Text("Developer Contact",
                   style:
-                      TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
+                      TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               height: 5,

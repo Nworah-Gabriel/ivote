@@ -8,6 +8,7 @@ import 'package:vote/home.dart';
 import 'package:vote/organization_register.dart';
 import 'package:vote/poll.dart';
 import 'package:vote/result.dart';
+import 'package:vote/voters_login.dart';
 import 'package:vote/voters_registration.dart';
 
 class PollPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class PollPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter AppBar Tutorial',
+      title: 'iVote',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -112,7 +113,7 @@ class _VoteState extends State<Vote> {
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -187,7 +188,7 @@ class _VoteState extends State<Vote> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Poll(),
+                                    builder: (context) => VotersLogin(),
                                   ));
                             },
                             padding: const EdgeInsets.fromLTRB(20, 20, 23, 20),
@@ -227,7 +228,7 @@ class _VoteState extends State<Vote> {
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: SingleChildScrollView(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

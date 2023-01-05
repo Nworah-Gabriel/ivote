@@ -73,36 +73,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontStyle: FontStyle.italic),
           ),
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.how_to_vote_sharp),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Poll(),
-                    ));
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.bar_chart_outlined), // The "+" icon
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Result(),
-                    ));
-              }, // The `_incrementCo, // The `_incrementCounter` function
-            ),
-            IconButton(
-              icon: const Icon(Icons.app_registration_rounded), // The "+" icon
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Vote(),
-                    ));
-              }, // The `_incrementCounter` function
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.how_to_vote_sharp),
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => Poll(),
+            //         ));
+            //   },
+            // ),
+            // IconButton(
+            //   icon: const Icon(Icons.bar_chart_outlined), // The "+" icon
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => Result(),
+            //         ));
+            //   }, // The `_incrementCo, // The `_incrementCounter` function
+            // ),
+            // IconButton(
+            //   icon: const Icon(Icons.app_registration_rounded), // The "+" icon
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => Vote(),
+            //         ));
+            //   }, // The `_incrementCounter` function
+            // ),
             IconButton(
               icon: const Icon(Icons.help), // The "+" icon
               onPressed: () {

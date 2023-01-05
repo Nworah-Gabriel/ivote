@@ -15,28 +15,26 @@ class ResultPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: RegisterVoter(),
+      home: VotersLogin(),
     );
   }
 }
 
-class RegisterVoter extends StatefulWidget {
-  RegisterVoter({super.key});
+class VotersLogin extends StatefulWidget {
+  VotersLogin({super.key});
 
   @override
-  _RegisterVoterState createState() => _RegisterVoterState();
+  _VoterLoginState createState() => _VoterLoginState();
 }
 
-class _RegisterVoterState extends State<RegisterVoter> {
+class _VoterLoginState extends State<VotersLogin> {
   late String? FullName;
-  late String? email;
   late String? identity;
   late String? password;
+  late String? position;
   late String? organization;
-  late String? validate_organization;
 
-  final GlobalKey<_RegisterVoterState> _formkey =
-      GlobalKey<_RegisterVoterState>();
+  final GlobalKey<_VoterLoginState> _formkey = GlobalKey<_VoterLoginState>();
 
   Widget _buildFullName() {
     return TextFormField(
@@ -52,16 +50,16 @@ class _RegisterVoterState extends State<RegisterVoter> {
     );
   }
 
-  Widget _buildEmail() {
+  Widget _buildPostion() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
+      decoration: InputDecoration(labelText: 'Position'),
       validator: (String? value) {
         if (value == null) {
-          return 'Email name is required';
+          return 'Position is required';
         }
       },
       onSaved: (String? value) {
-        email = value;
+        position = value;
       },
     );
   }
@@ -108,20 +106,6 @@ class _RegisterVoterState extends State<RegisterVoter> {
     );
   }
 
-  Widget _buildValidateOrganization() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Retype Organization'),
-      validator: (String? value) {
-        if (value == null) {
-          return 'Organization validation is required';
-        }
-      },
-      onSaved: (String? value) {
-        validate_organization = value;
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,11 +127,10 @@ class _RegisterVoterState extends State<RegisterVoter> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       _buildFullName(),
-                      _buildEmail(),
                       _buildIdentity(),
                       _buildPassword(),
+                      _buildPostion(),
                       _buildOrganization(),
-                      _buildValidateOrganization(),
                       SizedBox(
                         height: 60,
                       ),
@@ -160,7 +143,7 @@ class _RegisterVoterState extends State<RegisterVoter> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => RegisterVoter(),
+                                      builder: (context) => Vote(),
                                     ));
                               },
                               child: Text(
