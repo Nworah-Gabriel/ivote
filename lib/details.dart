@@ -152,19 +152,19 @@ class _AboutState extends State<About> {
             Container(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Row(children: [
-                Icon(Icons.phone, size: 40),
+                Icon(Icons.phone, size: 20),
                 Text("    +234 902 509 1332",
                     style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold))
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold))
               ]),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               child: Row(children: [
-                Icon(Icons.email_outlined, size: 40),
+                Icon(Icons.email_outlined, size: 20),
                 Text("    gabrielnworah6@gmail.com",
                     style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold))
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold))
               ]),
             )
           ],

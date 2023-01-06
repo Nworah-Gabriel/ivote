@@ -51,7 +51,7 @@ class _RegisterContestantState extends State<RegisterContestant> {
 
   Widget _buildPosition() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
+      decoration: InputDecoration(labelText: 'Position'),
       validator: (String? value) {
         if (value == null) {
           return 'Position name is required';

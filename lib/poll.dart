@@ -4,27 +4,12 @@ import 'package:vote/home.dart';
 import 'package:vote/result.dart';
 import 'package:vote/vote_page.dart';
 
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key});
+enum Selected { Downloadable, Deliverable }
 
-// @override
-// Widget build(BuildContext context) {
-//   return Container(
-//     child: Center(
-//       child: Text(
-//         'WELCOME TO IVTE',
-//         style: TextStyle(
-//           color: Colors.amberAccent,
-//           fontSize: 30,
-//         ),
-//       ),
-//     ),
-//   );
-
-// }
 class PollPage extends StatelessWidget {
   const PollPage({super.key});
 
+  // Selected? _selected;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -41,25 +26,17 @@ class PollPage extends StatelessWidget {
 
 class Poll extends StatefulWidget {
   Poll({super.key});
-
   @override
   _PollState createState() => _PollState();
 }
 
 class _PollState extends State<Poll> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
+  Object? _value = {
+    "value": "",
+  };
+  // late String name;
+  // name = _value;
+  Selected? _selected;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,6 +115,26 @@ class _PollState extends State<Poll> {
           SizedBox(
             height: 10,
           ),
+          RadioListTile(
+              value: Selected.Deliverable,
+              groupValue: _selected,
+              onChanged: (val) {
+                setState(() {
+                  _selected = val;
+                });
+              }),
+          RadioListTile(
+              title: Text(Selected.Downloadable.name),
+              value: Selected.Downloadable,
+              groupValue: _selected,
+              onChanged: (val) {
+                setState(() {
+                  _selected = val;
+                });
+              }),
+          RadioListTile(value: 3, groupValue: 1, onChanged: null),
+          RadioListTile(value: 4, groupValue: 1, onChanged: null),
+          RadioListTile(value: 5, groupValue: 1, onChanged: null),
         ])));
   }
 }

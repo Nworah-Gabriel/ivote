@@ -51,7 +51,7 @@ class _RegisterOrganizationState extends State<RegisterOrganization> {
 
   Widget _buildPassword() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
+      decoration: InputDecoration(labelText: 'Password'),
       validator: (String? value) {
         if (value == null) {
           return 'Password is required';

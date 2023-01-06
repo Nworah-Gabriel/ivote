@@ -132,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 70,
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+            margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
               'Voting made easy and reliable with iVote. Cast your vote from anywhere around the world where no one is watching',
               style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
