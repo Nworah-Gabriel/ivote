@@ -5,7 +5,28 @@ import 'package:vote/result.dart';
 import 'package:vote/vote_page.dart';
 import 'package:vote/voters_registration.dart';
 
-enum Selected { Downloadable, Deliverable }
+enum Selected {
+  value1,
+  value2,
+  value3,
+  value4,
+  value5,
+  value6,
+  value7,
+  value8,
+  value9,
+  value10,
+  value11,
+  value12,
+  value13,
+  value14,
+  value15,
+  value16,
+  value17,
+  value18,
+  value19,
+  value20
+}
 
 class PollPage extends StatelessWidget {
   const PollPage({super.key});
@@ -40,14 +61,14 @@ class _PollState extends State<Poll> {
   // name = _value;
   Selected? _selected;
   @override
-  Widget Render() {
+  Widget Render(name, display) {
     return Container(
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
       child: Container(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: RadioListTile(
-              title: Text(Selected.Deliverable.name),
-              value: Selected.Downloadable,
+              title: Text(display),
+              value: name,
               groupValue: _selected,
               onChanged: (val) {
                 setState(() {
@@ -62,12 +83,12 @@ class _PollState extends State<Poll> {
     );
   }
 
-  void getit(int num) {
-    int i;
-    for (i = 0; i < num; i += 1) {
-      Render();
-    }
-  }
+  // void getit(int num) {
+  //   int i;
+  //   for (i = 0; i < num; i += 1) {
+  //     Render();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +171,8 @@ class _PollState extends State<Poll> {
             ),
             // Render(),
             // Render(),
-            for (i = 0; i < 10; i += 1) Render(),
+            for (i = 0; i < 10; i += 1)
+              Render(Selected.values[i], Selected.values[i].name),
             SizedBox(
               height: 50,
             ),
