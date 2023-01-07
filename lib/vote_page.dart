@@ -2,17 +2,17 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:vote/contestant_registration.dart';
-import 'package:vote/details.dart';
-import 'package:vote/home.dart';
-import 'package:vote/organization_register.dart';
-import 'package:vote/poll.dart';
-import 'package:vote/result.dart';
-import 'package:vote/voters_login.dart';
-import 'package:vote/voters_registration.dart';
+import 'package:iVote/contestant_registration.dart';
+import 'package:iVote/details.dart';
+import 'package:iVote/home.dart';
+import 'package:iVote/organization_register.dart';
+import 'package:iVote/poll.dart';
+import 'package:iVote/result.dart';
+import 'package:iVote/voters_login.dart';
+import 'package:iVote/voters_registration.dart';
 
-class PollPage extends StatelessWidget {
-  const PollPage({super.key});
+class VotePage extends StatelessWidget {
+  const VotePage({super.key});
 
   // This widget is the root of your application.
   @override

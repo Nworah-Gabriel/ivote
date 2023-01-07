@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vote/splashscreen.dart';
+import 'package:iVote/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());

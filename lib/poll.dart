@@ -1,9 +1,13 @@
+import 'dart:convert';
+import 'dart:html';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:vote/details.dart';
-import 'package:vote/home.dart';
-import 'package:vote/result.dart';
-import 'package:vote/vote_page.dart';
-import 'package:vote/voters_registration.dart';
+import 'package:http/http.dart' as http;
+import 'package:iVote/details.dart';
+import 'package:iVote/home.dart';
+import 'package:iVote/result.dart';
+import 'package:iVote/vote_page.dart';
+import 'package:iVote/voters_registration.dart';
 
 enum Selected {
   value1,
@@ -53,13 +57,27 @@ class Poll extends StatefulWidget {
 }
 
 class _PollState extends State<Poll> {
-  Object? _value = {
-    "value": "",
-  };
-  late int i;
-  // late String name;
-  // name = _value;
+  GetContestantData() async {
+    var response =
+        await http.get(Uri.https('127.0.0.1', 'contestants'));
+    var jsonData = jsonDecode(response.body);
+    List<Voters> voters = [];
+    for (var u in jsonData) {
+      Voters voter = Voters(u['FullName'], u['password'], u['identity'],
+          u['organization'], u['email']);
+      voters.add(voter);
+    }
+    print(voters.length);
+    // Contestants = voters;
+    return voters;
+  }
+  int i = 0;
   Selected? _selected;
+  @override
+  ValueGetter getcontestants() {
+    return GetContestantData();
+  }
+
   @override
   Widget Render(name, display) {
     return Container(
@@ -172,7 +190,8 @@ class _PollState extends State<Poll> {
             // Render(),
             // Render(),
             for (i = 0; i < 10; i += 1)
-              Render(Selected.values[i], Selected.values[i].name),
+            	Render(Selected.values[i += 1], Selected.values[i += 1].name),
+	
             SizedBox(
               height: 50,
             ),
@@ -182,11 +201,23 @@ class _PollState extends State<Poll> {
                 Container(
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RegisterVoter(),
-                          ));
+                      AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.SUCCES,
+                        animType: AnimType.BOTTOMSLIDE,
+                        title: "Congratulation",
+                        desc: "Voting successful",
+                        btnCancelOnPress: (() {}),
+                        btnOkOnPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VotePage(),
+                              ));
+                        },
+                        dismissOnBackKeyPress: true,
+                        dismissOnTouchOutside: true,
+                      ).show();
                     },
                     child: Text(
                       'Submit',
@@ -209,11 +240,12 @@ class _PollState extends State<Poll> {
                 Container(
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Vote(),
-                          ));
+                      //Navigator.push(
+                          //context,
+                          //MaterialPageRoute(
+                            //builder: (context) => Vote(),
+                          //));
+	               GetContestantData();
                     },
                     child: Text(
                       'Cancel',
@@ -238,4 +270,10 @@ class _PollState extends State<Poll> {
           ]),
         )));
   }
+}
+
+class Voters {
+  final String FullName, email, password, identity, organization;
+  Voters(
+      this.FullName, this.password, this.identity, this.organization, this.email);
 }

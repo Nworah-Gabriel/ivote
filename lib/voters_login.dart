@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vote/home.dart';
-import 'package:vote/poll.dart';
-import 'package:vote/vote_page.dart';
+import 'package:iVote/home.dart';
+import 'package:iVote/poll.dart';
+import 'package:iVote/vote_page.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});

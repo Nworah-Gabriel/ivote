@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vote/home.dart';
-import 'package:vote/poll.dart';
-import 'package:vote/vote_page.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:iVote/home.dart';
+import 'package:iVote/poll.dart';
+import 'package:iVote/vote_page.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
@@ -159,11 +160,23 @@ class _RegisterVoterState extends State<RegisterVoter> {
                           Container(
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => RegisterVoter(),
-                                    ));
+                                AwesomeDialog(
+                                  context: context,
+                                  dialogType: DialogType.SUCCES,
+                                  animType: AnimType.BOTTOMSLIDE,
+                                  title: "Congratulations!",
+                                  desc: "Voters Registration successful",
+                                  btnCancelOnPress: (() {}),
+                                  btnOkOnPress: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => VotePage(),
+                                        ));
+                                  },
+                                  dismissOnBackKeyPress: true,
+                                  dismissOnTouchOutside: true,
+                                ).show();
                               },
                               child: Text(
                                 'Submit',

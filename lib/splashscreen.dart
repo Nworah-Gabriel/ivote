@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vote/home.dart';
+import 'package:iVote/home.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});

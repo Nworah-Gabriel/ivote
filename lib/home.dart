@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:vote/details.dart';
-import 'package:vote/poll.dart';
-import 'package:vote/result.dart';
-import 'package:vote/splashscreen.dart';
-import 'package:vote/vote_page.dart';
+import 'package:iVote/details.dart';
+import 'package:iVote/poll.dart';
+import 'package:iVote/result.dart';
+import 'package:iVote/splashscreen.dart';
+import 'package:iVote/vote_page.dart';
 
 // class HomePage extends StatelessWidget {
 //   const HomePage({super.key});
