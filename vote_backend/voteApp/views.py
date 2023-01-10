@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Organizations, Voters, Contestant
 from rest_framework import viewsets, permissions
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from .serializers import OrganizationsSerializer, VotersSerializer, ContestantSerializer
 # Create your views here.
 
 #SOME IMPORTANT VARIABLES
-
+@authentication_classes([]) # Add this
+@permission_classes([])
 class votersViewSet(viewsets.ModelViewSet):
     """
     Api endpoint that allow Voters to be viewed or edited.
@@ -17,7 +18,8 @@ class votersViewSet(viewsets.ModelViewSet):
     serializer_class = VotersSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
+@authentication_classes([]) # Add this
+@permission_classes([])
 class ContestantViewSet(viewsets.ModelViewSet):
     """
     Api endpoint that allow Voters to be viewed or edited.
@@ -26,6 +28,8 @@ class ContestantViewSet(viewsets.ModelViewSet):
     serializer_class = ContestantSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+@authentication_classes([]) # Add this
+@permission_classes([])
 class OrganizationsViewSet(viewsets.ModelViewSet):
     """
     Api endpoint that allow Voters to be viewed or edited.
@@ -36,6 +40,8 @@ class OrganizationsViewSet(viewsets.ModelViewSet):
 
 
 @api_view(['POST'])
+@authentication_classes([]) # Add this
+@permission_classes([])
 def VotersRegistration(request):
     """"
     A function for voters registration

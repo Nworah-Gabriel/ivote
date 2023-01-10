@@ -57,27 +57,28 @@ class Poll extends StatefulWidget {
 }
 
 class _PollState extends State<Poll> {
-  GetContestantData() async {
-    var response =
-        await http.get(Uri.https('127.0.0.1', 'contestants'));
-    var jsonData = jsonDecode(response.body);
-    List<Voters> voters = [];
-    for (var u in jsonData) {
-      Voters voter = Voters(u['FullName'], u['password'], u['identity'],
-          u['organization'], u['email']);
-      voters.add(voter);
-    }
-    print(voters.length);
-    // Contestants = voters;
-    return voters;
-  }
-  int i = 0;
-  Selected? _selected;
-  @override
-  ValueGetter getcontestants() {
-    return GetContestantData();
+  Future<http.Response> fetchit() {
+    return http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
   }
 
+  GetContestantData() async {
+    var response = await http.get(Uri.http('127.0.0.1:8000', 'contestants/'));
+    var jsonData = jsonDecode(response.body);
+    var result = jsonData['results'];
+    List<Voters> voters = [];
+    // for (var u in result) {
+    //   Voters voter = Voters(u['FullName'], u['password'], u['identity'],
+    //       u['organization'], u['email']);
+    //   voters.add(voter);
+    // }
+    // print(voters.length);
+    // Contestants = voters;
+    print(jsonData['results']);
+    return response;
+  }
+
+  int i = 0;
+  Selected? _selected;
   @override
   Widget Render(name, display) {
     return Container(
@@ -190,8 +191,8 @@ class _PollState extends State<Poll> {
             // Render(),
             // Render(),
             for (i = 0; i < 10; i += 1)
-            	Render(Selected.values[i += 1], Selected.values[i += 1].name),
-	
+              Render(Selected.values[i += 1], Selected.values[i += 1].name),
+
             SizedBox(
               height: 50,
             ),
@@ -241,11 +242,12 @@ class _PollState extends State<Poll> {
                   child: TextButton(
                     onPressed: () {
                       //Navigator.push(
-                          //context,
-                          //MaterialPageRoute(
-                            //builder: (context) => Vote(),
-                          //));
-	               GetContestantData();
+                      //context,
+                      //MaterialPageRoute(
+                      //builder: (context) => Vote(),
+                      //));
+                      GetContestantData();
+                      // fetchit();
                     },
                     child: Text(
                       'Cancel',
@@ -274,6 +276,6 @@ class _PollState extends State<Poll> {
 
 class Voters {
   final String FullName, email, password, identity, organization;
-  Voters(
-      this.FullName, this.password, this.identity, this.organization, this.email);
+  Voters(this.FullName, this.password, this.identity, this.organization,
+      this.email);
 }
